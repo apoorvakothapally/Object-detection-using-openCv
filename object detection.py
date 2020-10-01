@@ -1,7 +1,5 @@
 import cv2
-#try this first with a image
-#img=cv2.imread(r'C:\Users\Apoorva\Pictures\lambo.jpg')
-# with webcam
+
 cap=cv2.VideoCapture(0)
 cap.set(3,640)
 cap.set(4,480)
@@ -13,12 +11,11 @@ with open(classFile,'rt') as f:  #rt means we are reading it
     classNames=f.read().split('\n') #strip and split each name when u see a new line and adds it to our list classNames
 print(classNames)
 print(len(classNames))
-#download these files n u will find them in jupyter home page
 configPath='ssd_mobilenet_v3_large_coco_2020_01_14.pbtxt'
 weightsPath='frozen_inference_graph.pb'
 #create a model
 net=cv2.dnn_DetectionModel(configPath,weightsPath)
-#these below congigurations are set by default in documentation n we are going to use the same
+
 net.setInputSize(320,320)
 net.setInputScale(1.0/127.5)
 net.setInputMean((127.5,127.5,127.5))
